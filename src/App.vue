@@ -141,7 +141,17 @@ onMounted(async () => {
 
   supabase.auth.onAuthStateChange((_event, s) => {
     session.value = s
+    if (s) loadCycles()
   })
+
+  // Temps réel
+  supabase
+    .channel('cycles-changes')
+    .on('postgres_changes',
+      { event: '*', schema: 'public', table: 'cycles' },
+      () => { loadCycles() }
+    )
+    .subscribe()
 })
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
