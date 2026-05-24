@@ -1,0 +1,11 @@
+{
+  "name": "Cycle — Suivi menstruel",
+  "short_name": "Cycle",
+  "description": "Suivi de cycle menstruel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8fc",
+  "theme_color": "#ad1457",
+  "lang": "fr",
+  "orientation": "portrait"
+}
