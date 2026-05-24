@@ -49,7 +49,7 @@ const PHASES = [
     name: 'Period',
     color: '#FFD6D6',
     textColor: '#B84A4A',
-    description: 'Menstrual phase: bleeding, possible cramps. Rest and stay hydrated.',
+    description: 'Your body is working hard, remember you deserve comfort and to rest a lot. Drink this water!',
   },
   {
     id: 'follicular',
@@ -57,7 +57,7 @@ const PHASES = [
     name: 'Follicular phase',
     color: '#FFF3CC',
     textColor: '#8B6F1F',
-    description: 'Follicles mature and estrogen rises. Energy often increases.',
+    description: "It's spring, feel your energy rising up!",
   },
   {
     id: 'ovulation',
@@ -65,7 +65,7 @@ const PHASES = [
     name: 'Ovulation',
     color: '#D6F5E3',
     textColor: '#2E7A52',
-    description: 'Peak fertility: egg release. Most fertile window (~3 days).',
+    description: "You're shining 🔥 Peak libido, stay hydrated",
   },
   {
     id: 'luteal',
@@ -73,7 +73,7 @@ const PHASES = [
     name: 'Luteal phase',
     color: '#EDE0FF',
     textColor: '#6B4D96',
-    description: 'Progesterone dominates after ovulation. PMS possible before next period.',
+    description: "It's fall, trust your intuitions and take care of your mind. Yoga might help!",
   },
 ]
 
@@ -355,23 +355,22 @@ function showToast(message) {
       <!-- Calendar view -->
       <template v-if="!showSettings">
         <div class="calendar-view">
-          <p class="logo" aria-label="moon bloom">
-            m<span class="logo__accent">oo</span>n bl<span class="logo__accent">oo</span>m
-          </p>
+          <header class="header-top">
+  <div class="header-top__text">
+    <p class="logo" aria-label="moon bloom">
+      m<span class="logo__accent">oo</span>n bl<span class="logo__accent">oo</span>m
+    </p>
+    <p class="logo-sub">cycle tracker</p>
+  </div>
+  <button type="button" class="icon-btn" aria-label="Settings" @click="openSettings">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.75"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="1.75"/>
+    </svg>
+  </button>
+</header>
 
-          <header class="header card">
-            <h1 class="header__title header__title--sub">Cycle Tracker</h1>
-            <button type="button" class="icon-btn" aria-label="Settings" @click="openSettings">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.75"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="1.75"/>
-              </svg>
-            </button>
-          </header>
-
-          <p v-if="loading" class="status">Loading…</p>
-          <p v-else-if="latestCycle" class="status">Last period: {{ formatDateEn(latestCycle.date_debut) }}</p>
-          <p v-else class="status status--hint">No period logged yet.</p>
+        
 
           <section class="calendar card" aria-label="Monthly calendar">
             <div class="month-nav">
@@ -412,7 +411,7 @@ function showToast(message) {
           <div v-if="popover" class="popover card" role="dialog" aria-labelledby="popover-title" @click.stop>
             <button type="button" class="popover__close" aria-label="Close" @click="closePopover">×</button>
             <h3 id="popover-title" class="popover__title">{{ popover.phase.name }}</h3>
-            <p class="popover__meta">{{ popover.dateStr }} — Day {{ popover.cycleDay }} of {{ cycleLength }} days</p>
+            <p class="popover__meta">Day {{ popover.cycleDay }} of {{ cycleLength }} days</p>
             <p class="popover__desc">{{ popover.phase.description }}</p>
           </div>
         </div>
@@ -454,7 +453,7 @@ function showToast(message) {
         </section>
 
         <section class="history card">
-          <h2 class="history__title">History</h2>
+          <h2 class="history__title">History of cycles</h2>
           <p v-if="!loading && historyEntries.length === 0" class="history__empty">No entries yet.</p>
           <ul v-else class="history__list">
             <li v-for="entry in historyEntries" :key="entry.id" class="history__item">
@@ -469,6 +468,7 @@ function showToast(message) {
         </section>
 
         <!-- Sign out -->
+        <p class="love-note">for eli from lucas, with love </p>
         <button type="button" class="signout-btn" @click="signOut">Sign out</button>
       </template>
 
@@ -529,9 +529,46 @@ function showToast(message) {
   box-sizing: border-box;
 }
 
+.love-note {
+  text-align: right;
+  font-size: 0.75rem;
+  color: #c9a8c0;
+  font-style: italic;
+  margin: 0.5rem 0;
+  letter-spacing: 0.03em;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.5rem 0.25rem 2.5rem;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.header-top__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.logo-sub {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 10px;
+  color: #3d3d4a;
+  text-transform: uppercase;
+  text-align: center;
+  padding-left: 6px;
+}
+
+
 .app--settings {
   overflow-y: auto;
-  padding-bottom: calc(1rem + var(--safe-b));
+  padding-top: calc(2rem + var(--safe-t));
+  padding-bottom: calc(3rem + var(--safe-b));
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -605,10 +642,10 @@ function showToast(message) {
 }
 
 .logo {
-  margin: 0.5rem 0 0.75rem;
+  margin: 0.5rem 0 0.25rem;
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: 400;
   letter-spacing: 0.04em;
   line-height: 1.15;
@@ -655,6 +692,13 @@ function showToast(message) {
 }
 
 .icon-btn:first-child { font-size: 1.5rem; font-weight: 300; line-height: 1; }
+
+.header-top .icon-btn {
+  position: absolute;
+  right: 0.25rem;
+  top: -1.75rem;
+  transform: none;
+}
 
 .status { margin: 0 0 0.5rem; padding: 0 0.25rem; font-size: 0.8rem; color: var(--muted); flex-shrink: 0; }
 .status--hint { color: #b08bb8; }
