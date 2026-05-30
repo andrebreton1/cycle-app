@@ -36,8 +36,8 @@ async function signOut() {
 const CYCLE_MIN = 23
 const CYCLE_MAX = 40
 const CYCLE_DEFAULT = 28
-const PERIOD_LENGTH = 5
-const OVULATION_LENGTH = 3
+const PERIOD_LENGTH = 4
+const OVULATION_LENGTH = 1
 const LUTEAL_LENGTH = 14
 const FIXED_PHASE_DAYS = PERIOD_LENGTH + OVULATION_LENGTH + LUTEAL_LENGTH
 const WEEKDAYS = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
